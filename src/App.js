@@ -37,17 +37,12 @@ class App extends Component {
       const idError="Id can't be blank";
       alert(idError);
       return;
-    }else if(id){
+    } else if(id){
       const idError="Id must be at least more than one number ";
-      if(!isNaN(id) ){
-      if(id < 1 ){
+      if(isNaN(id) || id < 1 ){
         alert(idError);
         return; 
-      }
-    }else{
-         alert(idError);
-        return;
-        }
+     }
     }
     if(!name){
       const nameError="Name can't be blank";
@@ -55,7 +50,8 @@ class App extends Component {
     }else if (name){
       const nameError="Name must be at least 6 characters long";
       const alphaExp=new RegExp(/^[a-zA-Z0-9_]{6,20}$/);
-      if(!alphaExp.test(name)){  
+	  
+      if(!alphaExp.test(name) || !isNaN(name)){  
       alert(nameError);  
       return ; 
       }
